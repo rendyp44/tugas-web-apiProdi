@@ -13,11 +13,12 @@ function App() {
     getProdi();
   },[])
 
-  function getMahasiswaId(id){
-    if(id>999){return id}
-    else if(id>99){return ("0")+id}
-    else if(id>9){return ("00")+id}
-    else {return ("000"+id)}
+  function generateNpm(tahunMasuk,kodeProdi,id){
+    const first6Digit=tahunMasuk.slice(-2)+(parseInt(tahunMasuk.slice(-2))+4)+kodeProdi
+    if(id>999){return first6Digit+id}
+    else if(id>99){return first6Digit+("0"+id)}
+    else if(id>9){return first6Digit+("00"+id)}
+    else {return first6Digit+("000"+id)}
   }
   
   return (
@@ -46,7 +47,7 @@ function App() {
           {angkatan.data.pagi?.map((kelasPagi,index)=>(
             <>
               <tr key={index}>
-                <td>{angkatan.tahun_masuk.slice(-2)}{parseInt(angkatan.tahun_masuk.slice(-2))+4}{prodi.kode_prodi}{getMahasiswaId(kelasPagi.id)}</td>
+                <td>{generateNpm(angkatan.tahun_masuk,prodi.kode_prodi,kelasPagi.id)}</td>
                 <td>{kelasPagi.nama}</td>
                 <td>{kelasPagi.alamat}</td>
                 <td>{kelasPagi.jenis_kelamin=="L"?"Laki-laki":"Perempuan"}</td>
@@ -71,7 +72,7 @@ function App() {
           {angkatan.data.malam?.map((kelasMalam,index)=>(
             <>
               <tr key={index}>
-                <td>{angkatan.tahun_masuk.slice(-2)}{parseInt(angkatan.tahun_masuk.slice(-2))+4}{prodi.kode_prodi}{getMahasiswaId(kelasMalam.id)}</td>
+                <td>{generateNpm(angkatan.tahun_masuk,prodi.kode_prodi,kelasMalam.id)}</td>
                 <td>{kelasMalam.nama}</td>
                 <td>{kelasMalam.alamat}</td>
                 <td>{kelasMalam.jenis_kelamin=="L"?"Laki-laki":"Perempuan"}</td>
@@ -96,7 +97,7 @@ function App() {
           {angkatan.data.cuti?.map((kelasCuti,index)=>(
             <>
               <tr key={index}>
-                <td>{angkatan.tahun_masuk.slice(-2)}{parseInt(angkatan.tahun_masuk.slice(-2))+4}{prodi.kode_prodi}{getMahasiswaId(kelasCuti.id)}</td>
+                <td>{generateNpm(angkatan.tahun_masuk,prodi.kode_prodi,kelasCuti.id)}</td>
                 <td>{kelasCuti.nama}</td>
                 <td>{kelasCuti.alamat}</td>
                 <td>{kelasCuti.jenis_kelamin=="L"?"Laki-laki":"Perempuan"}</td>
