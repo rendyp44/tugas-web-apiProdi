@@ -2,8 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from './pages/Home';
 import Prodi from './pages/Prodi';
 import Mahasiswa from './pages/Mahasiswa';
-import "./App.css"
-
 
 function App() {
   return (

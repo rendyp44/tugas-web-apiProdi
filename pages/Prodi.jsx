@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
+import '../index.css'
 
 const Prodi = () => {
 
@@ -9,7 +10,6 @@ const Prodi = () => {
 
   const fetchData = async () => {
     const res = await axios.get("https://strapi-rygs.onrender.com/api/prodis");
-    console.log(res.data.data[0].attributes.prodi[0]);
     setData(res.data.data[0].attributes.prodi[0]);
   }
 
@@ -53,7 +53,7 @@ const Prodi = () => {
                       <tbody>
                         {angkatan.data[kelas].map((mahasiswa, index) => (
                           <tr key={index}>
-                            <td className='hover:text-blue-500 hover:underline hover:scale-105 cursor-pointer' onClick={() => navigate(`/mahasiswa/${generateNPM(angkatan.tahun_masuk, prodi.kode_prodi, mahasiswa.id)}`)}>
+                            <td className='hover:text-blue-500 hover:underline hover:scale-110 cursor-pointer' onClick={() => navigate(`/mahasiswa/${generateNPM(angkatan.tahun_masuk, prodi.kode_prodi, mahasiswa.id)}`)}>
                               {generateNPM(angkatan.tahun_masuk, prodi.kode_prodi, mahasiswa.id)}
                             </td>
                             <td>{mahasiswa.nama}</td>
