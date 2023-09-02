@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import '../index.css'
+import prodi from "../api/prodi.json";
 
 const Prodi = () => {
 
@@ -9,8 +10,8 @@ const Prodi = () => {
   const navigate=useNavigate();
 
   const fetchData = async () => {
-    const res = await axios.get("https://strapi-rygs.onrender.com/api/prodis");
-    setData(res.data.data[0].attributes.prodi[0]);
+    // const res = await axios.get("https://strapi-rygs.onrender.com/api/prodis");
+    setData(prodi[0]);
   }
 
   useEffect(() => {
